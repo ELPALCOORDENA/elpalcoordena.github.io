@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Técnicos a Domicilio Madrid</title>
-  <meta name="description" content="Solicita técnicos a domicilio en Madrid de forma rápida, sencilla y segura. Fontanería, electricidad, cerrajería y más.">
+  <meta name="description" content="Solicita técnicos a domicilio en Madrid de forma rápida, sencilla y segura.">
   <style>
     :root {
       --primary: #1a365d;
@@ -13,6 +13,7 @@
       --text: #222;
       --light: #fff;
       --gray: #e5e7eb;
+      --shadow: 0 2px 8px #0001;
     }
     body {
       margin: 0;
@@ -27,6 +28,9 @@
       align-items: center;
       justify-content: space-between;
       padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     .logo {
       font-weight: bold;
@@ -93,7 +97,7 @@
     .step {
       background: var(--light);
       border-radius: 12px;
-      box-shadow: 0 2px 8px #0001;
+      box-shadow: var(--shadow);
       padding: 1.5rem 1.2rem;
       min-width: 200px;
       max-width: 250px;
@@ -105,70 +109,100 @@
       margin-bottom: 0.5rem;
       color: var(--accent);
     }
+    .services-section {
+      padding: 2rem 0 1rem 0;
+      background: var(--light);
+    }
+    .services-title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+    }
     .services {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 1.5rem;
-      margin: 2rem 0;
+      margin-bottom: 1.5rem;
     }
     .service-card {
-      background: var(--light);
+      background: var(--bg);
       border-radius: 10px;
-      box-shadow: 0 1px 6px #0001;
+      box-shadow: var(--shadow);
       padding: 1.2rem 1rem;
       min-width: 140px;
       text-align: center;
       flex: 1 1 160px;
       max-width: 180px;
+      transition: transform 0.15s;
+      cursor: pointer;
     }
-    .service-card img {
-      width: 40px;
-      height: 40px;
+    .service-card:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 4px 16px #0002;
+    }
+    .service-card .icon {
+      font-size: 2.2rem;
       margin-bottom: 0.5rem;
+      display: block;
+    }
+    .service-card .name {
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+    .see-all-btn {
+      display: block;
+      margin: 0 auto 1rem auto;
+      background: var(--primary);
+      color: var(--light);
+      border: none;
+      padding: 0.7rem 2rem;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .see-all-btn:hover {
+      background: #274472;
     }
     .testimonials {
       background: var(--gray);
       padding: 2rem 1rem;
       text-align: center;
     }
-    .testimonial {
-      font-style: italic;
+    .testimonials-title {
+      font-size: 1.3rem;
+      color: var(--primary);
       margin-bottom: 1rem;
-    }
-    .whatsapp-cta {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 2rem 0;
-    }
-    .whatsapp-btn {
-      background: #25d366;
-      color: var(--light);
-      border: none;
-      padding: 0.8rem 2rem;
-      font-size: 1.1rem;
-      border-radius: 30px;
-      cursor: pointer;
       font-weight: bold;
+    }
+    .testimonial-list {
       display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      text-decoration: none;
-      transition: background 0.2s;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
     }
-    .whatsapp-btn:hover {
-      background: #128c7e;
+    .testimonial {
+      background: var(--light);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 1rem 1.2rem;
+      min-width: 180px;
+      max-width: 260px;
+      font-style: italic;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
     }
-    footer {
-      background: var(--primary);
-      color: var(--light);
-      text-align: center;
-      padding: 1.5rem 1rem 1rem 1rem;
-      margin-top: 2rem;
+    .testimonial .author {
+      display: block;
+      margin-top: 0.7rem;
+      font-weight: bold;
+      font-style: normal;
+      color: var(--primary);
       font-size: 0.95rem;
     }
-    /* Formulario */
     .form-section {
       background: var(--light);
       max-width: 420px;
@@ -221,8 +255,119 @@
       font-weight: bold;
       margin-top: 1rem;
     }
-    @media (max-width: 800px) {
-      .steps, .services {
+    .blog-section {
+      background: var(--bg);
+      padding: 2rem 0 1rem 0;
+    }
+    .blog-title {
+      text-align: center;
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      font-weight: bold;
+    }
+    .blog-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .blog-card {
+      background: var(--light);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 1rem 1.2rem;
+      min-width: 180px;
+      max-width: 260px;
+      text-align: left;
+    }
+    .blog-card .blog-img {
+      width: 100%;
+      height: 90px;
+      background: var(--gray);
+      border-radius: 8px;
+      margin-bottom: 0.7rem;
+    }
+    .blog-card .blog-title {
+      font-size: 1.05rem;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+      color: var(--primary);
+    }
+    .blog-card .blog-summary {
+      font-size: 0.97rem;
+      color: #444;
+    }
+    .faq-section {
+      background: var(--light);
+      padding: 2rem 0 1rem 0;
+    }
+    .faq-title {
+      text-align: center;
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      font-weight: bold;
+    }
+    .faq-list {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--gray);
+      padding-bottom: 0.7rem;
+    }
+    .faq-q {
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+    }
+    .faq-a {
+      display: none;
+      color: #444;
+      margin-top: 0.2rem;
+    }
+    .faq-item.open .faq-a {
+      display: block;
+    }
+    .chat-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 16px #0003;
+      cursor: pointer;
+      z-index: 100;
+      transition: background 0.2s;
+    }
+    .chat-float:hover {
+      background: #128c7e;
+    }
+    footer {
+      background: var(--primary);
+      color: var(--light);
+      text-align: center;
+      padding: 1.5rem 1rem 1rem 1rem;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+      margin: 0 0.3rem;
+    }
+    @media (max-width: 900px) {
+      .steps, .services, .testimonial-list, .blog-list {
         flex-direction: column;
         align-items: center;
       }
@@ -239,7 +384,7 @@
     <nav>
       <a href="#">Inicio</a>
       <a href="#servicios">Servicios</a>
-      <a href="#solicitud">Solicitar técnico</a>
+      <a href="#blog">Blog</a>
       <a href="#faq">FAQ</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -267,35 +412,40 @@
     </div>
   </section>
 
-  <section class="services" id="servicios">
-    <div class="service-card">
-      <img src="https://placehold.co/40x40?text=🔧" alt="Fontanería">
-      <div>Fontanería</div>
+  <section class="services-section" id="servicios">
+    <div class="services-title">Nuestros servicios</div>
+    <div class="services">
+      <div class="service-card"><span class="icon">❄️</span><div class="name">Aire acondicionado</div></div>
+      <div class="service-card"><span class="icon">🧱</span><div class="name">Albañil</div></div>
+      <div class="service-card"><span class="icon">📡</span><div class="name">Antenas / Porteros</div></div>
+      <div class="service-card"><span class="icon">🔥</span><div class="name">Calderas</div></div>
+      <div class="service-card"><span class="icon">🔑</span><div class="name">Cerrajero</div></div>
+      <div class="service-card"><span class="icon">💡</span><div class="name">Electricista</div></div>
+      <div class="service-card"><span class="icon">🧺</span><div class="name">Electrodomésticos</div></div>
+      <div class="service-card"><span class="icon">🔧</span><div class="name">Fontanero</div></div>
+      <div class="service-card"><span class="icon">🚰</span><div class="name">Pocero</div></div>
+      <div class="service-card"><span class="icon">🏗️</span><div class="name">Reformas</div></div>
     </div>
-    <div class="service-card">
-      <img src="https://placehold.co/40x40?text=💡" alt="Electricidad">
-      <div>Electricidad</div>
-    </div>
-    <div class="service-card">
-      <img src="https://placehold.co/40x40?text=🔑" alt="Cerrajería">
-      <div>Cerrajería</div>
-    </div>
-    <div class="service-card">
-      <img src="https://placehold.co/40x40?text=🧰" alt="Otros">
-      <div>Otros servicios</div>
-    </div>
+    <button class="see-all-btn">Ver todos los servicios</button>
   </section>
 
   <section class="testimonials">
-    <div class="testimonial">"Rápidos y profesionales. Muy recomendables." - Juan M.</div>
-    <div class="testimonial">"Me solucionaron el problema en una hora." - Laura G.</div>
+    <div class="testimonials-title">Opiniones de clientes</div>
+    <div class="testimonial-list">
+      <div class="testimonial">
+        "Rápidos y profesionales. Muy recomendables."
+        <span class="author">Juan M.</span>
+      </div>
+      <div class="testimonial">
+        "Me solucionaron el problema en una hora."
+        <span class="author">Laura G.</span>
+      </div>
+      <div class="testimonial">
+        "Atención excelente y trato muy amable."
+        <span class="author">Carlos R.</span>
+      </div>
+    </div>
   </section>
-
-  <div class="whatsapp-cta">
-    <a class="whatsapp-btn" href="https://wa.me/34600000000" target="_blank">
-      <span>💬</span> Contáctanos por WhatsApp
-    </a>
-  </div>
 
   <section class="form-section" id="solicitud">
     <h2>Solicita tu técnico</h2>
@@ -307,17 +457,21 @@
       <input type="tel" id="telefono" name="telefono" required pattern="[0-9+ ]{9,15}">
 
       <label for="direccion">Dirección</label>
-      <input type="text" id="direccion" name="direccion" required>
+      <input type="text" id="direccion" name="direccion" required placeholder="Calle, número, piso...">
 
       <label for="servicio">Servicio</label>
       <select id="servicio" name="servicio" required>
         <option value="">Selecciona un servicio</option>
-        <option value="Fontanería">Fontanería</option>
-        <option value="Electricidad">Electricidad</option>
-        <option value="Cerrajería">Cerrajería</option>
+        <option value="Aire acondicionado">Aire acondicionado</option>
+        <option value="Albañil">Albañil</option>
+        <option value="Antenas / Porteros">Antenas / Porteros</option>
+        <option value="Calderas">Calderas</option>
+        <option value="Cerrajero">Cerrajero</option>
+        <option value="Electricista">Electricista</option>
         <option value="Electrodomésticos">Electrodomésticos</option>
-        <option value="Calefacción">Calefacción</option>
-        <option value="Otros">Otros</option>
+        <option value="Fontanero">Fontanero</option>
+        <option value="Pocero">Pocero</option>
+        <option value="Reformas">Reformas</option>
       </select>
 
       <label for="fecha">Fecha y hora preferida</label>
@@ -329,14 +483,62 @@
       <button type="submit">Enviar solicitud</button>
     </form>
     <div class="confirmation" id="confirmationMsg" style="display:none;">
-      ¡Solicitud recibida! Te contactaremos por WhatsApp en breve.
+      ¡Solicitud recibida! Te contactaremos en breve.
     </div>
   </section>
 
-  <footer>
+  <section class="blog-section" id="blog">
+    <div class="blog-title">Consejos y novedades</div>
+    <div class="blog-list">
+      <div class="blog-card">
+        <div class="blog-img"></div>
+        <div class="blog-title">¿Cómo elegir un buen técnico para tu hogar?</div>
+        <div class="blog-summary">Te damos las claves para acertar siempre que necesites un profesional en casa.</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img"></div>
+        <div class="blog-title">Mantenimiento básico de calderas</div>
+        <div class="blog-summary">Evita averías y ahorra dinero con estos sencillos consejos de mantenimiento.</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img"></div>
+        <div class="blog-title">¿Cuándo llamar a un pocero?</div>
+        <div class="blog-summary">Descubre las señales de alerta y cómo actuar ante problemas de pocería.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section" id="faq">
+    <div class="faq-title">Preguntas frecuentes</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Cómo funciona el servicio?</div>
+        <div class="faq-a">Solicitas el servicio, asignamos el técnico más adecuado y resolvemos tu problema en casa.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Qué zonas cubrís?</div>
+        <div class="faq-a">Actualmente cubrimos toda la Comunidad de Madrid. Pronto ampliaremos a más ciudades.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Cuánto tarda en llegar un técnico?</div>
+        <div class="faq-a">En la mayoría de los casos, un técnico puede estar en tu domicilio en menos de 2 horas.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Puedo pedir presupuesto sin compromiso?</div>
+        <div class="faq-a">Por supuesto, puedes solicitar presupuesto sin ningún compromiso.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="chat-float" title="Chat en vivo (próximamente)" onclick="alert('Chat en vivo próximamente')">
+    💬
+  </div>
+
+  <footer id="contacto">
     &copy; 2024 Técnicos Madrid · Tel: 600 00 00 00 · Email: info@tecnicosmadrid.com<br>
-    <a href="#" style="color:#fff; text-decoration:underline;">Aviso legal</a> | 
-    <a href="#" style="color:#fff; text-decoration:underline;">Política de privacidad</a>
+    <a href="#">Aviso legal</a> | 
+    <a href="#">Política de privacidad</a> | 
+    <a href="#">Redes sociales</a>
   </footer>
 
   <script>
@@ -345,12 +547,18 @@
       e.preventDefault();
       document.getElementById('serviceForm').style.display = 'none';
       document.getElementById('confirmationMsg').style.display = 'block';
-      // Aquí iría la lógica para enviar la solicitud a WhatsApp o backend
+      // Aquí irá la lógica real de envío
     });
 
     // Simulación de cambio de idioma
     function switchLang() {
       alert('Funcionalidad de cambio de idioma próximamente');
+    }
+
+    // FAQ acordeón
+    function toggleFaq(el) {
+      var item = el.parentElement;
+      item.classList.toggle('open');
     }
   </script>
 </body>
