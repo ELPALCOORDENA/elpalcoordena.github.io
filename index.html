@@ -3,12 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Técnicos Madrid - Reparaciones y Servicios a Domicilio</title>
-  <meta name="description" content="Técnicos expertos a domicilio en Madrid. Soluciona tu avería hoy mismo, sin sorpresas. Instalaciones, reparaciones y reformas con garantía.">
+  <title>Reparación Aire Acondicionado y Calderas Madrid | Técnicos Urgentes 24h</title>
+  <meta name="description" content="Técnicos especialistas en aire acondicionado y calderas en Madrid. Reparación urgente en 2h, sin sorpresas. +20.000 clientes. Garantía por escrito. ¡Llama ya!">
+  <meta name="keywords" content="reparar aire acondicionado Madrid, técnico calderas Madrid, reparación urgente, fontanero Madrid">
+  
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Técnicos Madrid",
+    "description": "Técnicos especialistas en reparaciones a domicilio",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "C/ Embajadores, 190",
+      "addressLocality": "Madrid",
+      "addressCountry": "ES"
+    },
+    "telephone": "+34600000000",
+    "email": "info@tecnicosmadrid.com",
+    "areaServed": "Madrid",
+    "serviceType": ["Aire acondicionado", "Calderas", "Fontanería", "Electricidad"],
+    "priceRange": "€€"
+  }
+  </script>
+
   <style>
     :root {
       --primary: #1a365d;
       --accent: #2ecc71;
+      --urgent: #e74c3c;
       --bg: #f7f9fa;
       --text: #222;
       --light: #fff;
@@ -32,12 +56,32 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      box-shadow: var(--shadow);
     }
     .logo {
       font-weight: bold;
       font-size: 1.5rem;
       color: var(--primary);
       letter-spacing: 1px;
+    }
+    .header-contact {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: bold;
+      color: var(--urgent);
+    }
+    .phone-btn {
+      background: var(--urgent);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .phone-btn:hover {
+      background: #c0392b;
     }
     nav {
       display: flex;
@@ -52,14 +96,17 @@
     nav a:hover {
       color: var(--accent);
     }
-    .lang-switch {
-      margin-left: 2rem;
-      font-size: 1rem;
-      cursor: pointer;
-      color: var(--primary);
-      border: none;
-      background: none;
+    
+    /* Trust badges */
+    .trust-bar {
+      background: var(--accent);
+      color: white;
+      text-align: center;
+      padding: 0.5rem;
+      font-weight: bold;
+      font-size: 0.9rem;
     }
+    
     /* Barra de servicios */
     .service-bar {
       background: var(--service-bar-bg);
@@ -94,6 +141,10 @@
       color: var(--accent);
       transform: translateY(-2px);
     }
+    .service-bar-item.priority {
+      border: 2px solid var(--accent);
+      background: rgba(46, 204, 113, 0.1);
+    }
     .service-bar-icon {
       width: 48px;
       height: 48px;
@@ -106,70 +157,130 @@
       width: 100%;
       height: 100%;
     }
+    
     /* Banner principal */
     .hero {
-      background: linear-gradient(90deg, var(--primary) 60%, #274472 100%);
+      background: linear-gradient(135deg, var(--primary) 0%, #274472 100%);
       color: var(--light);
-      padding: 1.5rem 2rem 1.2rem 2rem;
+      padding: 2rem 2rem 1.5rem 2rem;
       text-align: center;
-      margin-bottom: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+      opacity: 0.3;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
     }
     .hero h1 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
       font-weight: 700;
+      line-height: 1.2;
     }
-    .hero p {
-      font-size: 1.05rem;
-      margin-bottom: 1.2rem;
+    .hero .subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
       font-weight: 400;
+      opacity: 0.95;
+    }
+    .hero-features {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+    .hero-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 500;
     }
     .cta-btn {
       background: var(--accent);
       color: var(--light);
       border: none;
-      padding: 0.7rem 2rem;
-      font-size: 1rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
       border-radius: 30px;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.2s;
-      box-shadow: 0 2px 8px #0002;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(46, 204, 113, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     .cta-btn:hover {
       background: #27ae60;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
     }
-    /* Formulario */
+    .cta-urgent {
+      background: var(--urgent);
+      box-shadow: 0 4px 16px rgba(231, 76, 60, 0.3);
+    }
+    .cta-urgent:hover {
+      background: #c0392b;
+      box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+    }
+    
+    /* Formulario mejorado */
     .form-section {
       background: var(--light);
-      max-width: 420px;
+      max-width: 450px;
       margin: 2.5rem auto 1.5rem auto;
-      padding: 2rem 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px #0002;
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border: 1px solid var(--gray);
     }
     .form-section h2 {
       text-align: center;
       color: var(--primary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+    }
+    .form-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
     }
     form label {
       display: block;
-      margin-bottom: 0.3rem;
-      font-weight: 500;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: var(--primary);
     }
     form input, form select, form textarea {
       width: 100%;
-      padding: 0.7rem;
-      margin-bottom: 1.1rem;
-      border: 1px solid var(--gray);
-      border-radius: 6px;
+      padding: 0.8rem;
+      margin-bottom: 1.2rem;
+      border: 2px solid var(--gray);
+      border-radius: 8px;
       font-size: 1rem;
       background: #f9f9f9;
       box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    form input:focus, form select:focus, form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: white;
     }
     form textarea {
-      min-height: 60px;
+      min-height: 80px;
       resize: vertical;
     }
     form button {
@@ -177,194 +288,309 @@
       background: var(--accent);
       color: var(--light);
       border: none;
-      padding: 1rem;
+      padding: 1.2rem;
       font-size: 1.1rem;
       border-radius: 30px;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.2s;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     form button:hover {
       background: #27ae60;
+      transform: translateY(-2px);
+    }
+    .form-guarantee {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 1rem;
     }
     .confirmation {
       text-align: center;
       color: var(--accent);
       font-weight: bold;
       margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(46, 204, 113, 0.1);
+      border-radius: 8px;
     }
-    /* Servicio SPA */
+    
+    /* Servicio SPA mejorado */
     .service-detail {
-      max-width: 700px;
+      max-width: 800px;
       margin: 2.5rem auto 2rem auto;
       background: var(--light);
-      border-radius: 14px;
-      box-shadow: 0 2px 12px #0002;
-      padding: 2rem 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 2.5rem 2rem;
       text-align: center;
       animation: fadeIn 0.5s;
     }
     .service-detail img {
-      width: 320px;
-      max-width: 95%;
-      height: 220px;
+      width: 100%;
+      max-width: 400px;
+      height: 250px;
       object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 2px 8px #0001;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
     }
-    .service-detail h2 {
+    .service-detail h1 {
       color: var(--primary);
-      margin-bottom: 0.7rem;
+      margin-bottom: 1rem;
+      font-size: 2rem;
     }
     .service-detail p {
       font-size: 1.1rem;
-      color: #333;
-      margin-bottom: 1.2rem;
-      line-height: 1.5;
+      color: #444;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      text-align: left;
     }
-    .service-detail .cta-btn {
-      margin-top: 1rem;
+    .service-benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+      text-align: left;
     }
+    .service-benefit {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background: rgba(46, 204, 113, 0.1);
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+    .service-cta-section {
+      background: var(--bg);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+    }
+    
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px);}
       to { opacity: 1; transform: none;}
     }
-    /* FAQ */
+    
+    /* FAQ mejorado */
     .faq-section {
       background: var(--light);
-      padding: 2rem 0 1rem 0;
+      padding: 3rem 0 2rem 0;
+      margin-top: 2rem;
     }
     .faq-title {
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       color: var(--primary);
-      margin-bottom: 1.2rem;
+      margin-bottom: 2rem;
       font-weight: bold;
     }
     .faq-list {
-      max-width: 700px;
+      max-width: 800px;
       margin: 0 auto;
       padding: 0 1rem;
     }
     .faq-item {
-      margin-bottom: 1rem;
-      border-bottom: 1px solid var(--gray);
-      padding-bottom: 0.7rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      overflow: hidden;
     }
     .faq-q {
       font-weight: bold;
       cursor: pointer;
       color: var(--primary);
-      margin-bottom: 0.2rem;
+      padding: 1rem;
+      background: var(--bg);
+      transition: background 0.2s;
+    }
+    .faq-q:hover {
+      background: #e8f4f8;
     }
     .faq-a {
       display: none;
       color: #444;
-      margin-top: 0.2rem;
+      padding: 1rem;
+      line-height: 1.5;
     }
     .faq-item.open .faq-a {
       display: block;
     }
-    /* Opiniones */
+    
+    /* Testimonios mejorados */
     .testimonials {
-      background: var(--gray);
-      padding: 2rem 1rem;
+      background: var(--bg);
+      padding: 3rem 1rem;
       text-align: center;
       margin-top: 2rem;
     }
     .testimonials-title {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       color: var(--primary);
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
       font-weight: bold;
     }
     .testimonial-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
     .testimonial {
       background: var(--light);
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      padding: 1rem 1.2rem;
-      min-width: 180px;
-      max-width: 260px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      padding: 1.5rem;
       font-style: italic;
       font-size: 1rem;
-      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    .testimonial::before {
+      content: '"';
+      font-size: 3rem;
+      color: var(--accent);
+      position: absolute;
+      top: -10px;
+      left: 15px;
     }
     .testimonial .author {
       display: block;
-      margin-top: 0.7rem;
+      margin-top: 1rem;
       font-weight: bold;
       font-style: normal;
       color: var(--primary);
       font-size: 0.95rem;
     }
-    /* Chat flotante */
-    .chat-float {
+    .testimonial .rating {
+      color: #ffd700;
+      margin-top: 0.5rem;
+    }
+    
+    /* Botones flotantes */
+    .floating-actions {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: #25d366;
-      color: #fff;
-      border-radius: 50%;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 100;
+    }
+    .chat-float, .call-float {
       width: 60px;
       height: 60px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      box-shadow: 0 4px 16px #0003;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
       cursor: pointer;
-      z-index: 100;
-      transition: background 0.2s;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: white;
+    }
+    .chat-float {
+      background: #25d366;
     }
     .chat-float:hover {
       background: #128c7e;
+      transform: scale(1.1);
     }
-    /* Footer */
+    .call-float {
+      background: var(--urgent);
+    }
+    .call-float:hover {
+      background: #c0392b;
+      transform: scale(1.1);
+    }
+    
+    /* Footer mejorado */
     footer {
       background: var(--primary);
       color: var(--light);
       text-align: center;
-      padding: 1.5rem 1rem 1rem 1rem;
-      margin-top: 2rem;
-      font-size: 0.95rem;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .footer-contact {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .footer-links {
+      margin-top: 1rem;
     }
     footer a {
       color: #fff;
       text-decoration: underline;
-      margin: 0 0.3rem;
+      margin: 0 0.5rem;
     }
+    
     @media (max-width: 900px) {
       .service-bar {
         flex-wrap: wrap;
         gap: 0.7rem;
       }
-      .testimonial-list {
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      .hero-features {
         flex-direction: column;
-        align-items: center;
+        gap: 1rem;
       }
       header {
         flex-direction: column;
         gap: 1rem;
+        padding: 1rem;
+      }
+      .header-contact {
+        order: -1;
+      }
+      .service-benefits {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .floating-actions {
+        bottom: 10px;
+        right: 10px;
+      }
+      .chat-float, .call-float {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
       }
     }
   </style>
 </head>
 <body>
+  <div class="trust-bar">
+    ⚡ SERVICIO URGENTE 24H • +20.000 CLIENTES • GARANTÍA POR ESCRITO ⚡
+  </div>
+  
   <header>
     <div class="logo">Técnicos Madrid</div>
+    <div class="header-contact">
+      <span>📞 URGENCIAS 24H:</span>
+      <a href="tel:+34600000000" class="phone-btn">600 00 00 00</a>
+    </div>
     <nav>
       <a href="#" onclick="showHome();return false;">Inicio</a>
       <a href="#faq" onclick="scrollToSection('faq');return false;">FAQ</a>
       <a href="#contacto" onclick="scrollToSection('contacto');return false;">Contacto</a>
     </nav>
-    <button class="lang-switch" onclick="switchLang()">ES | EN</button>
   </header>
 
   <!-- Barra de servicios SPA -->
@@ -376,38 +602,61 @@
   <div id="spaContent">
     <!-- Home por defecto -->
     <section class="hero">
-      <h1>Técnicos expertos a domicilio en Madrid. Soluciona tu avería hoy mismo, sin sorpresas.</h1>
-      <p>Más de 20.000 clientes confían en nosotros. Reparamos, instalamos y resolvemos cualquier avería en tu hogar o empresa, en Madrid y alrededores. Servicio rápido, seguro y con garantía.</p>
-      <a href="#solicitud"><button class="cta-btn" onclick="scrollToSection('solicitud')">Solicitar técnico</button></a>
+      <div class="hero-content">
+        <h1>Técnicos expertos a domicilio en Madrid</h1>
+        <p class="subtitle">Solucionamos tu avería en menos de 2 horas, sin sorpresas en el precio. Más de 20.000 clientes nos recomiendan. Servicio rápido, seguro y con garantía.</p>
+        
+        <div class="hero-features">
+          <div class="hero-feature">
+            <span>⚡</span> Técnico en 2h
+          </div>
+          <div class="hero-feature">
+            <span>💰</span> Precio cerrado
+          </div>
+          <div class="hero-feature">
+            <span>🛡️</span> Garantía escrita
+          </div>
+          <div class="hero-feature">
+            <span>📱</span> Atención 24h
+          </div>
+        </div>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+          <button class="cta-btn" onclick="scrollToSection('solicitud')">Solicitar técnico</button>
+          <a href="tel:+34600000000" class="cta-btn cta-urgent" style="text-decoration: none; display: inline-block;">Llamar ahora</a>
+        </div>
+      </div>
     </section>
 
     <section class="form-section" id="solicitud">
-      <h2>Solicita tu técnico</h2>
+      <h2>Solicita tu técnico especialista</h2>
+      <p class="form-subtitle">Te llamamos en menos de 10 minutos para confirmar la cita</p>
       <form id="serviceForm" autocomplete="on">
-        <label for="nombre">Nombre</label>
+        <label for="nombre">Nombre completo</label>
         <input type="text" id="nombre" name="nombre" required>
 
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" name="telefono" required pattern="[0-9+ ]{9,15}">
+        <label for="telefono">Teléfono de contacto</label>
+        <input type="tel" id="telefono" name="telefono" required pattern="[0-9+ ]{9,15}" placeholder="600 00 00 00">
 
-        <label for="direccion">Dirección</label>
-        <input type="text" id="direccion" name="direccion" required placeholder="Calle, número, piso...">
+        <label for="direccion">Dirección completa</label>
+        <input type="text" id="direccion" name="direccion" required placeholder="Calle, número, piso, código postal...">
 
-        <label for="servicio">Servicio</label>
+        <label for="servicio">¿Qué necesitas reparar?</label>
         <select id="servicio" name="servicio" required>
-          <option value="">Selecciona un servicio</option>
+          <option value="">Selecciona el servicio</option>
         </select>
 
-        <label for="fecha">Fecha y hora preferida</label>
+        <label for="fecha">¿Cuándo te va mejor?</label>
         <input type="datetime-local" id="fecha" name="fecha" required>
 
-        <label for="observaciones">Observaciones (opcional)</label>
-        <textarea id="observaciones" name="observaciones"></textarea>
+        <label for="observaciones">Describe el problema (opcional)</label>
+        <textarea id="observaciones" name="observaciones" placeholder="Ej: El aire no enfría, hace ruido extraño..."></textarea>
 
-        <button type="submit">Enviar solicitud</button>
+        <button type="submit">Solicitar técnico gratis</button>
       </form>
+      <p class="form-guarantee">🔒 Tus datos están seguros. No compartimos información con terceros.</p>
       <div class="confirmation" id="confirmationMsg" style="display:none;">
-        ¡Solicitud recibida! Te contactaremos en breve.
+        ✅ ¡Solicitud recibida! Te llamaremos en menos de 10 minutos para confirmar la cita.
       </div>
     </section>
 
@@ -415,128 +664,223 @@
       <div class="faq-title">Preguntas frecuentes</div>
       <div class="faq-list">
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">¿En qué zonas trabajáis?</div>
-          <div class="faq-a">Atendemos toda la Comunidad de Madrid, tanto en la capital como en los principales municipios.</div>
+          <div class="faq-q" onclick="toggleFaq(this)">¿En cuánto tiempo puede venir un técnico? ⏰</div>
+          <div class="faq-a">En servicios urgentes, nuestros técnicos pueden estar en tu domicilio en menos de 2 horas. Para citas programadas, nos adaptamos a tu horario, incluso fines de semana.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">¿Cuánto tardáis en enviar un técnico?</div>
-          <div class="faq-a">En la mayoría de los casos, un profesional puede estar en tu domicilio en menos de 2 horas.</div>
+          <div class="faq-q" onclick="toggleFaq(this)">¿Cuánto cuesta la visita del técnico? 💰</div>
+          <div class="faq-a">La visita y diagnóstico son GRATUITOS. Solo pagas si decides hacer la reparación. Te damos un presupuesto cerrado antes de empezar, sin sorpresas.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">¿Ofrecéis garantía en las reparaciones?</div>
-          <div class="faq-a">Sí, todos nuestros trabajos están garantizados para tu tranquilidad.</div>
+          <div class="faq-q" onclick="toggleFaq(this)">¿Qué garantía ofrecéis? 🛡️</div>
+          <div class="faq-a">Todos nuestros trabajos tienen garantía por escrito. Las reparaciones incluyen 6 meses de garantía en mano de obra y piezas originales.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">¿Puedo pedir presupuesto sin compromiso?</div>
-          <div class="faq-a">Por supuesto, te asesoramos y preparamos un presupuesto gratuito y sin compromiso.</div>
+          <div class="faq-q" onclick="toggleFaq(this)">¿Trabajáis en toda Madrid? 📍</div>
+          <div class="faq-a">Sí, atendemos Madrid capital y principales municipios: Getafe, Alcalá, Móstoles, Fuenlabrada, Leganés, Alcorcón y más.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">¿Tenéis técnicos los fines de semana? 📅</div>
+          <div class="faq-a">Sí, trabajamos 7 días a la semana, incluidos festivos. Para emergencias, disponemos de servicio 24 horas.</div>
         </div>
       </div>
     </section>
 
     <section class="testimonials" id="testimonios">
-      <div class="testimonials-title">Opiniones de clientes</div>
+      <div class="testimonials-title">Lo que dicen nuestros clientes</div>
       <div class="testimonial-list">
         <div class="testimonial">
-          "Llamé por una avería urgente y en menos de dos horas tenía el problema resuelto. ¡Muy recomendables!"
-          <span class="author">Marta, Chamberí</span>
+          Llamé por una avería urgente de aire acondicionado en pleno agosto. En menos de 2 horas tenía el problema resuelto. Precio justo y técnico muy profesional.
+          <span class="author">Marta G., Chamberí</span>
+          <div class="rating">⭐⭐⭐⭐⭐</div>
         </div>
         <div class="testimonial">
-          "Profesionales, rápidos y con precios claros. Volveré a contar con ellos."
-          <span class="author">Luis, Getafe</span>
+          Mi caldera se averió en pleno invierno. Vinieron el mismo día, me dieron presupuesto claro y la repararon perfectamente. Muy recomendables.
+          <span class="author">Luis M., Getafe</span>
+          <div class="rating">⭐⭐⭐⭐⭐</div>
         </div>
         <div class="testimonial">
-          "Me ayudaron con una reforma y el resultado fue excelente. Trato cercano y de confianza."
-          <span class="author">Ana, Alcalá de Henares</span>
+          Profesionales de verdad. Me ayudaron con una reforma completa del baño. Trabajo limpio, rápido y con garantía. Volveré a contar con ellos.
+          <span class="author">Ana R., Alcalá de Henares</span>
+          <div class="rating">⭐⭐⭐⭐⭐</div>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- Chat flotante -->
-  <div class="chat-float" title="Chat en vivo (próximamente)" onclick="alert('Chat en vivo próximamente')">
-    💬
+  <!-- Botones flotantes -->
+  <div class="floating-actions">
+    <a href="tel:+34600000000" class="call-float" title="Llamar ahora">📞</a>
+    <div class="chat-float" title="WhatsApp" onclick="window.open('https://wa.me/34600000000?text=Hola, necesito un técnico urgente', '_blank')">💬</div>
   </div>
 
   <!-- Footer -->
   <footer id="contacto">
-    Técnicos Madrid · C/ Embajadores, 190, Madrid · Tel: 600 00 00 00 · Email: info@tecnicosmadrid.com<br>
-    Síguenos en redes sociales |
-    <a href="#">Aviso legal</a> |
-    <a href="#">Política de privacidad</a>
+    <div class="footer-content">
+      <div class="footer-contact">
+        📞 600 00 00 00 | 📧 info@tecnicosmadrid.com
+      </div>
+      <p>Técnicos Madrid · C/ Embajadores, 190, Madrid · Servicio 24h en toda la Comunidad de Madrid</p>
+      <div class="footer-links">
+        <a href="#">Aviso legal</a> |
+        <a href="#">Política de privacidad</a> |
+        <a href="#">Condiciones de servicio</a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    // Datos de servicios con icono 3D soft (simulado), nombre, descripción y foto realista
+    // Datos de servicios
     const servicios = [
       {
         id: "aire-acondicionado",
         nombre: "Aire acondicionado",
         svg: `<svg viewBox="0 0 48 48"><rect x="8" y="14" width="32" height="12" rx="4" fill="#7ed6df"/><rect x="12" y="18" width="24" height="4" rx="2" fill="#fff"/><circle cx="16" cy="34" r="3" fill="#22a6b3"/><circle cx="32" cy="34" r="3" fill="#22a6b3"/><path d="M16 37v5M32 37v5" stroke="#22a6b3" stroke-width="2"/></svg>`,
         descripcion: "Instalación, reparación y mantenimiento de sistemas de aire acondicionado split, conductos y bombas de calor. Técnicos certificados para que disfrutes de la mejor climatización en tu hogar o negocio, con rapidez y garantía.",
-        imagen: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80"
+        imagen: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80",
+        benefits: [
+          "✅ Técnicos certificados por fabricantes",
+          "✅ Reparación en menos de 2 horas",
+          "✅ Repuestos originales disponibles",
+          "✅ Mantenimiento preventivo",
+          "✅ Instalación con garantía",
+          "✅ Servicio 24h en verano"
+        ]
       },
       {
         id: "albanil",
         nombre: "Albañil",
         svg: `<svg viewBox="0 0 48 48"><rect x="10" y="30" width="28" height="8" rx="2" fill="#f6e58d"/><rect x="14" y="34" width="6" height="4" rx="1" fill="#fff"/><rect x="24" y="34" width="6" height="4" rx="1" fill="#fff"/><rect x="12" y="22" width="24" height="8" rx="2" fill="#e17055"/><polygon points="20,16 28,16 24,10" fill="#b2bec3"/></svg>`,
         descripcion: "Reformas, reparaciones y trabajos de albañilería: tabiques, alicatados, solados, yesos y pequeñas obras. Acabados profesionales, máxima limpieza y asesoramiento personalizado para tu proyecto.",
-        imagen: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80"
+        imagen: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
+        benefits: [
+          "✅ Reformas integrales y parciales",
+          "✅ Alicatados y solados",
+          "✅ Tabiques y divisiones",
+          "✅ Yesos y acabados",
+          "✅ Pequeñas obras",
+          "✅ Limpieza incluida"
+        ]
       },
       {
         id: "antenas",
         nombre: "Antenas / Porteros",
         svg: `<svg viewBox="0 0 48 48"><ellipse cx="24" cy="36" rx="8" ry="4" fill="#dff9fb"/><rect x="22" y="12" width="4" height="18" fill="#636e72"/><circle cx="24" cy="10" r="3" fill="#636e72"/><path d="M24 10 Q36 22 24 36" stroke="#22a6b3" stroke-width="2" fill="none"/><path d="M24 10 Q12 22 24 36" stroke="#22a6b3" stroke-width="2" fill="none"/></svg>`,
         descripcion: "Instalación y reparación de antenas TDT, parabólicas y porteros automáticos. Solucionamos problemas de señal, interferencias y averías en sistemas de comunicación, tanto en viviendas como en comunidades.",
-        imagen: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80"
+        imagen: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80",
+        benefits: [
+          "✅ Antenas TDT y parabólicas",
+          "✅ Porteros automáticos",
+          "✅ Reparación de interferencias",
+          "✅ Instalación en comunidades",
+          "✅ Sistemas de comunicación",
+          "✅ Mejora de señal"
+        ]
       },
       {
         id: "calderas",
         nombre: "Calderas",
         svg: `<svg viewBox="0 0 48 48"><rect x="14" y="14" width="20" height="20" rx="6" fill="#fab1a0"/><circle cx="24" cy="24" r="6" fill="#fff"/><rect x="20" y="34" width="8" height="6" rx="3" fill="#636e72"/><circle cx="18" cy="18" r="2" fill="#fff"/><circle cx="30" cy="18" r="2" fill="#fff"/><path d="M24 18v12" stroke="#636e72" stroke-width="2"/></svg>`,
         descripcion: "Reparación urgente, mantenimiento e instalación de calderas, termos y calentadores de todas las marcas. Servicio técnico rápido y seguro para que nunca te falte el agua caliente ni la calefacción.",
-        imagen: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600&q=80"
+        imagen: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600&q=80",
+        benefits: [
+          "✅ Reparación urgente 24h",
+          "✅ Todas las marcas y modelos",
+          "✅ Técnicos con carnet de gas",
+          "✅ Repuestos originales en stock",
+          "✅ Mantenimiento anual",
+          "✅ Instalación de calderas nuevas"
+        ]
       },
       {
         id: "cerrajero",
         nombre: "Cerrajero",
         svg: `<svg viewBox="0 0 48 48"><rect x="16" y="22" width="16" height="8" rx="4" fill="#fdcb6e"/><circle cx="20" cy="26" r="2" fill="#fff"/><rect x="34" y="24" width="4" height="4" rx="2" fill="#636e72"/><rect x="14" y="30" width="20" height="4" rx="2" fill="#fff"/><path d="M38 24h6l-2-2v-4l2-2h-6" stroke="#636e72" stroke-width="2" fill="none"/></svg>`,
         descripcion: "Apertura de puertas, cambio de cerraduras y bombines, instalación de sistemas de seguridad y puertas acorazadas. Cerrajeros 24h para emergencias, sin daños y con total garantía.",
-        imagen: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?auto=format&fit=crop&w=600&q=80"
+        imagen: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?auto=format&fit=crop&w=600&q=80",
+        benefits: [
+          "✅ Apertura sin daños",
+          "✅ Cerrajero 24h",
+          "✅ Cambio de cerraduras",
+          "✅ Puertas acorazadas",
+          "✅ Sistemas de seguridad",
+          "✅ Emergencias nocturnas"
+        ]
       },
       {
         id: "electricista",
         nombre: "Electricista",
         svg: `<svg viewBox="0 0 48 48"><polygon points="24,10 30,30 18,30 24,42" fill="#ffeaa7"/><circle cx="24" cy="44" r="3" fill="#636e72"/><rect x="23" y="30" width="2" height="8" fill="#fff"/></svg>`,
         descripcion: "Averías eléctricas, instalaciones, boletines, cuadros eléctricos y reformas de iluminación. Electricistas autorizados para resolver cualquier problema eléctrico en tu vivienda o empresa, con seguridad y eficacia.",
-        imagen: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=600&q=80"
+        imagen: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=600&q=80",
+        benefits: [
+          "✅ Electricistas autorizados",
+          "✅ Boletines eléctricos",
+          "✅ Cuadros eléctricos",
+          "✅ Averías urgentes 24h",
+          "✅ Instalaciones certificadas",
+          "✅ Iluminación LED"
+        ]
       },
       {
         id: "electrodomesticos",
         nombre: "Electrodomésticos",
         svg: `<svg viewBox="0 0 48 48"><rect x="14" y="14" width="20" height="20" rx="4" fill="#a29bfe"/><circle cx="24" cy="24" r="8" fill="#fff"/><circle cx="24" cy="24" r="4" fill="#636e72"/><rect x="18" y="34" width="12" height="4" rx="2" fill="#636e72"/><circle cx="20" cy="18" r="1.5" fill="#636e72"/><circle cx="28" cy="18" r="1.5" fill="#636e72"/></svg>`,
         descripcion: "Reparación de lavadoras, frigoríficos, hornos, lavavajillas y pequeños electrodomésticos. Técnicos especializados en todas las marcas, con repuestos originales y garantía en cada intervención.",
-        imagen: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80"
+        imagen: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
+        benefits: [
+          "✅ Todas las marcas",
+          "✅ Repuestos originales",
+          "✅ Técnicos especializados",
+          "✅ Reparación a domicilio",
+          "✅ Garantía en reparaciones",
+          "✅ Presupuesto gratuito"
+        ]
       },
       {
         id: "fontanero",
         nombre: "Fontanero",
         svg: `<svg viewBox="0 0 48 48"><rect x="22" y="14" width="4" height="18" rx="2" fill="#00b894"/><rect x="16" y="32" width="16" height="6" rx="3" fill="#00cec9"/><circle cx="24" cy="40" r="3" fill="#00cec9"/><path d="M24 43c0 2-2 4-4 4s-4-2-4-4M24 43c0 2 2 4 4 4s4-2 4-4" stroke="#00b894" stroke-width="2"/></svg>`,
         descripcion: "Desatascos, fugas, cambio de grifos, sanitarios, radiadores e instalaciones de fontanería. Fontaneros expertos para solucionar cualquier problema de agua en tu hogar o negocio, 24 horas.",
-        imagen: "https://images.unsplash.com/photo-1621905252472-e8592afb8f2f?auto=format&fit=crop&w=600&q=80"
+        imagen: "https://images.unsplash.com/photo-1621905252472-e8592afb8f2f?auto=format&fit=crop&w=600&q=80",
+        benefits: [
+          "✅ Desatascos sin obras",
+          "✅ Reparación de fugas urgente",
+          "✅ Cambio de grifos y sanitarios",
+          "✅ Instalación de radiadores",
+          "✅ Servicio 24h emergencias",
+          "✅ Presupuesto sin compromiso"
+        ]
       },
       {
         id: "pocero",
         nombre: "Pocero",
         svg: `<svg viewBox="0 0 48 48"><ellipse cx="24" cy="32" rx="12" ry="5" fill="#636e72"/><ellipse cx="24" cy="40" rx="12" ry="3" fill="#00b894"/><rect x="21" y="14" width="6" height="18" rx="3" fill="#fff"/><circle cx="24" cy="44" r="2" fill="#636e72"/></svg>`,
         descripcion: "Desatascos y limpieza de tuberías, pozos, arquetas y redes de saneamiento. Equipos especializados para resolver atascos y malos olores de forma rápida y eficaz, sin obras innecesarias.",
-        imagen: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80"
+        imagen: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
+        benefits: [
+          "✅ Desatascos profesionales",
+          "✅ Limpieza de tuberías",
+          "✅ Pozos y arquetas",
+          "✅ Sin obras innecesarias",
+          "✅ Equipos especializados",
+          "✅ Eliminación de malos olores"
+        ]
       },
       {
         id: "reformas",
         nombre: "Reformas",
         svg: `<svg viewBox="0 0 48 48"><rect x="10" y="28" width="28" height="10" rx="4" fill="#fd79a8"/><rect x="18" y="36" width="12" height="4" rx="2" fill="#636e72"/><rect x="22" y="16" width="4" height="12" rx="2" fill="#636e72"/><circle cx="16" cy="20" r="3" fill="#fdcb6e"/><circle cx="32" cy="20" r="3" fill="#fdcb6e"/></svg>`,
         descripcion: "Reformas integrales o parciales en viviendas, locales y oficinas. Coordinamos todos los gremios para que tu reforma sea rápida, limpia y con acabados de calidad, ajustándonos a tu presupuesto.",
-        imagen: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80"
+        imagen: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80",
+        benefits: [
+          "✅ Reformas integrales",
+          "✅ Coordinación de gremios",
+          "✅ Acabados de calidad",
+          "✅ Presupuesto ajustado",
+          "✅ Trabajo limpio y rápido",
+          "✅ Viviendas, locales y oficinas"
+        ]
       }
     ];
 
@@ -544,6 +888,7 @@
     function renderServiceBar(activeId) {
       const bar = document.getElementById('serviceBar');
       bar.innerHTML = '';
+      
       servicios.forEach(serv => {
         const btn = document.createElement('button');
         btn.className = 'service-bar-item' + (activeId === serv.id ? ' active' : '');
@@ -558,6 +903,9 @@
       renderServiceBar();
       document.getElementById('spaContent').innerHTML = document.getElementById('homeTemplate').innerHTML;
       fillServiceSelect();
+      // Actualizar title y meta
+      document.title = "Reparación Aire Acondicionado y Calderas Madrid | Técnicos Urgentes 24h";
+      updateMetaDescription("Técnicos especialistas en aire acondicionado y calderas en Madrid. Reparación urgente en 2h, sin sorpresas. +20.000 clientes. Garantía por escrito. ¡Llama ya!");
       window.scrollTo(0,0);
     }
 
@@ -565,22 +913,53 @@
     function showService(id) {
       const serv = servicios.find(s => s.id === id);
       renderServiceBar(id);
+      
+      // Actualizar SEO
+      if (serv.seo_title) {
+        document.title = serv.seo_title;
+      }
+      if (serv.seo_desc) {
+        updateMetaDescription(serv.seo_desc);
+      }
+      
+      const benefitsHtml = serv.benefits ? 
+        `<div class="service-benefits">
+          ${serv.benefits.map(benefit => `<div class="service-benefit">${benefit}</div>`).join('')}
+        </div>` : '';
+      
       document.getElementById('spaContent').innerHTML = `
         <div class="service-detail">
-          <img src="${serv.imagen}" alt="Técnico especialista en ${serv.nombre}">
-          <h2>${serv.nombre}</h2>
+          <img src="${serv.imagen}" alt="Técnico especialista en ${serv.nombre} Madrid">
+          <h1>${serv.nombre} en Madrid</h1>
           <p>${serv.descripcion}</p>
-          <button class="cta-btn" onclick="showHome();setTimeout(()=>document.getElementById('servicio').value='${serv.nombre}',200);scrollToSection('solicitud')">Solicitar este servicio</button>
+          ${benefitsHtml}
+          <div class="service-cta-section">
+            <h3>¿Necesitas un técnico de ${serv.nombre}?</h3>
+            <p>Te llamamos en menos de 10 minutos y enviamos un técnico especialista a tu domicilio.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+              <button class="cta-btn" onclick="showHome();setTimeout(()=>{document.getElementById('servicio').value='${serv.nombre}';scrollToSection('solicitud');},200)">Solicitar técnico</button>
+              <a href="tel:+34600000000" class="cta-btn cta-urgent" style="text-decoration: none; display: inline-block;">Llamar ahora</a>
+            </div>
+          </div>
         </div>
       `;
       window.scrollTo(0,0);
+    }
+
+    // Actualizar meta description
+    function updateMetaDescription(desc) {
+      let meta = document.querySelector('meta[name="description"]');
+      if (meta) {
+        meta.setAttribute('content', desc);
+      }
     }
 
     // Rellenar select de servicios en el formulario
     function fillServiceSelect() {
       const sel = document.getElementById('servicio');
       if (!sel) return;
-      sel.innerHTML = '<option value="">Selecciona un servicio</option>';
+      sel.innerHTML = '<option value="">Selecciona el servicio</option>';
+      
       servicios.forEach(s => {
         const opt = document.createElement('option');
         opt.value = s.nombre;
@@ -603,7 +982,7 @@
       item.classList.toggle('open');
     }
 
-    // Simulación de envío de formulario
+    // Inicialización
     document.addEventListener('DOMContentLoaded', function() {
       // Home template para SPA
       const homeHtml = document.getElementById('spaContent').innerHTML;
@@ -615,19 +994,45 @@
       renderServiceBar();
       fillServiceSelect();
 
+      // Formulario
       document.body.addEventListener('submit', function(e) {
         if (e.target && e.target.id === 'serviceForm') {
           e.preventDefault();
+          
+          // Aquí puedes añadir el envío real del formulario
+          // fetch('/enviar-formulario', { method: 'POST', body: new FormData(e.target) })
+          
           document.getElementById('serviceForm').style.display = 'none';
           document.getElementById('confirmationMsg').style.display = 'block';
+          
+          // Scroll al mensaje de confirmación
+          document.getElementById('confirmationMsg').scrollIntoView({behavior: "smooth"});
         }
       });
+
+      // Establecer fecha mínima en el formulario (hoy)
+      const fechaInput = document.getElementById('fecha');
+      if (fechaInput) {
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        fechaInput.min = now.toISOString().slice(0, 16);
+      }
     });
 
-    // Simulación de cambio de idioma
-    function switchLang() {
-      alert('Funcionalidad de cambio de idioma próximamente');
+    // Detectar si viene de una búsqueda específica (puedes usar URL params)
+    function checkUrlParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const service = urlParams.get('servicio');
+      if (service) {
+        const serviceObj = servicios.find(s => s.id === service);
+        if (serviceObj) {
+          showService(service);
+        }
+      }
     }
+
+    // Llamar al cargar la página
+    window.addEventListener('load', checkUrlParams);
   </script>
 </body>
 </html>
