@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Técnicos a Domicilio Madrid</title>
-  <meta name="description" content="Solicita técnicos a domicilio en Madrid de forma rápida, sencilla y segura.">
+  <title>Técnicos Madrid - Reparaciones y Servicios a Domicilio</title>
+  <meta name="description" content="Técnicos expertos a domicilio en Madrid. Soluciona tu avería hoy mismo, sin sorpresas. Instalaciones, reparaciones y reformas con garantía.">
   <style>
     :root {
       --primary: #1a365d;
@@ -14,6 +14,7 @@
       --light: #fff;
       --gray: #e5e7eb;
       --shadow: 0 2px 8px #0001;
+      --service-bar-bg: #f3f6fa;
     }
     body {
       margin: 0;
@@ -27,7 +28,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 2rem;
+      padding: 1rem 2rem 0.5rem 2rem;
       position: sticky;
       top: 0;
       z-index: 10;
@@ -59,121 +60,145 @@
       border: none;
       background: none;
     }
+    /* Barra de servicios */
+    .service-bar {
+      background: var(--service-bar-bg);
+      box-shadow: 0 2px 8px #0001;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 0.4rem 0.5rem;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--gray);
+    }
+    .service-bar-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--primary);
+      min-width: 70px;
+      margin: 0 0.2rem;
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+    .service-bar-item:hover {
+      opacity: 1;
+      color: var(--accent);
+    }
+    .service-bar-icon {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 0.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Banner principal */
     .hero {
       background: linear-gradient(90deg, var(--primary) 60%, #274472 100%);
       color: var(--light);
-      padding: 3rem 2rem 2rem 2rem;
+      padding: 1.5rem 2rem 1.2rem 2rem;
       text-align: center;
-    }
-    .hero h1 {
-      font-size: 2.5rem;
       margin-bottom: 0.5rem;
     }
+    .hero h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
     .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+      font-size: 1.05rem;
+      margin-bottom: 1.2rem;
+      font-weight: 400;
     }
     .cta-btn {
       background: var(--accent);
       color: var(--light);
       border: none;
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
+      padding: 0.7rem 2rem;
+      font-size: 1rem;
       border-radius: 30px;
       cursor: pointer;
       font-weight: bold;
       transition: background 0.2s;
+      box-shadow: 0 2px 8px #0002;
     }
     .cta-btn:hover {
       background: #27ae60;
     }
-    .steps {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin: 2.5rem 0;
-      flex-wrap: wrap;
-    }
-    .step {
-      background: var(--light);
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      padding: 1.5rem 1.2rem;
-      min-width: 200px;
-      max-width: 250px;
+    /* Sección descripción */
+    .desc-section {
       text-align: center;
+      margin: 1.2rem auto 2rem auto;
+      max-width: 600px;
+      font-size: 1.1rem;
+      color: #333;
     }
-    .step span {
-      display: block;
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
+    /* Servicios detallados */
     .services-section {
       padding: 2rem 0 1rem 0;
       background: var(--light);
     }
     .services-title {
       text-align: center;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: var(--primary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       font-weight: bold;
     }
     .services {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1.2rem;
       margin-bottom: 1.5rem;
     }
     .service-card {
       background: var(--bg);
       border-radius: 10px;
       box-shadow: var(--shadow);
-      padding: 1.2rem 1rem;
+      padding: 1.1rem 1rem 0.7rem 1rem;
       min-width: 140px;
       text-align: center;
       flex: 1 1 160px;
       max-width: 180px;
       transition: transform 0.15s;
       cursor: pointer;
+      border: 1px solid #f0f0f0;
     }
     .service-card:hover {
       transform: translateY(-6px) scale(1.04);
       box-shadow: 0 4px 16px #0002;
+      border-color: var(--accent);
     }
     .service-card .icon {
-      font-size: 2.2rem;
+      width: 38px;
+      height: 38px;
       margin-bottom: 0.5rem;
-      display: block;
+      display: inline-block;
     }
     .service-card .name {
       font-weight: 500;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+      color: var(--primary);
     }
-    .see-all-btn {
-      display: block;
-      margin: 0 auto 1rem auto;
-      background: var(--primary);
-      color: var(--light);
-      border: none;
-      padding: 0.7rem 2rem;
-      border-radius: 30px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s;
+    .service-card .desc {
+      font-size: 0.97rem;
+      color: #444;
+      min-height: 38px;
     }
-    .see-all-btn:hover {
-      background: #274472;
-    }
+    /* Testimonios */
     .testimonials {
       background: var(--gray);
       padding: 2rem 1rem;
       text-align: center;
     }
     .testimonials-title {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       color: var(--primary);
       margin-bottom: 1rem;
       font-weight: bold;
@@ -203,6 +228,7 @@
       color: var(--primary);
       font-size: 0.95rem;
     }
+    /* Formulario */
     .form-section {
       background: var(--light);
       max-width: 420px;
@@ -255,56 +281,14 @@
       font-weight: bold;
       margin-top: 1rem;
     }
-    .blog-section {
-      background: var(--bg);
-      padding: 2rem 0 1rem 0;
-    }
-    .blog-title {
-      text-align: center;
-      font-size: 1.3rem;
-      color: var(--primary);
-      margin-bottom: 1.2rem;
-      font-weight: bold;
-    }
-    .blog-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-    }
-    .blog-card {
-      background: var(--light);
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      padding: 1rem 1.2rem;
-      min-width: 180px;
-      max-width: 260px;
-      text-align: left;
-    }
-    .blog-card .blog-img {
-      width: 100%;
-      height: 90px;
-      background: var(--gray);
-      border-radius: 8px;
-      margin-bottom: 0.7rem;
-    }
-    .blog-card .blog-title {
-      font-size: 1.05rem;
-      font-weight: bold;
-      margin-bottom: 0.3rem;
-      color: var(--primary);
-    }
-    .blog-card .blog-summary {
-      font-size: 0.97rem;
-      color: #444;
-    }
+    /* FAQ */
     .faq-section {
       background: var(--light);
       padding: 2rem 0 1rem 0;
     }
     .faq-title {
       text-align: center;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       color: var(--primary);
       margin-bottom: 1.2rem;
       font-weight: bold;
@@ -332,6 +316,7 @@
     .faq-item.open .faq-a {
       display: block;
     }
+    /* Chat flotante */
     .chat-float {
       position: fixed;
       bottom: 24px;
@@ -353,6 +338,7 @@
     .chat-float:hover {
       background: #128c7e;
     }
+    /* Footer */
     footer {
       background: var(--primary);
       color: var(--light);
@@ -367,13 +353,17 @@
       margin: 0 0.3rem;
     }
     @media (max-width: 900px) {
-      .steps, .services, .testimonial-list, .blog-list {
+      .services, .testimonial-list {
         flex-direction: column;
         align-items: center;
       }
       header {
         flex-direction: column;
         gap: 1rem;
+      }
+      .service-bar {
+        flex-wrap: wrap;
+        gap: 0.7rem;
       }
     }
   </style>
@@ -384,69 +374,175 @@
     <nav>
       <a href="#">Inicio</a>
       <a href="#servicios">Servicios</a>
-      <a href="#blog">Blog</a>
       <a href="#faq">FAQ</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <button class="lang-switch" onclick="switchLang()">ES | EN</button>
   </header>
 
+  <!-- Barra de servicios -->
+  <div class="service-bar">
+    <div class="service-bar-item" title="Aire acondicionado">
+      <span class="service-bar-icon">
+        <!-- Aire acondicionado SVG -->
+        <svg width="24" height="24" fill="none"><rect x="3" y="6" width="18" height="6" rx="2" fill="#1a365d"/><rect x="5" y="8" width="14" height="2" rx="1" fill="#fff"/><circle cx="8" cy="15" r="1.5" fill="#2ecc71"/><circle cx="12" cy="15" r="1.5" fill="#2ecc71"/><circle cx="16" cy="15" r="1.5" fill="#2ecc71"/></svg>
+      </span>
+      <span>Aire Acond.</span>
+    </div>
+    <div class="service-bar-item" title="Albañil">
+      <span class="service-bar-icon">
+        <!-- Albañil SVG -->
+        <svg width="24" height="24" fill="none"><rect x="4" y="12" width="16" height="6" rx="1" fill="#1a365d"/><rect x="6" y="14" width="4" height="2" rx="0.5" fill="#fff"/><rect x="14" y="14" width="4" height="2" rx="0.5" fill="#fff"/></svg>
+      </span>
+      <span>Albañil</span>
+    </div>
+    <div class="service-bar-item" title="Antenas / Porteros">
+      <span class="service-bar-icon">
+        <!-- Antenas SVG -->
+        <svg width="24" height="24" fill="none"><rect x="11" y="6" width="2" height="10" rx="1" fill="#1a365d"/><circle cx="12" cy="18" r="2" fill="#2ecc71"/><circle cx="12" cy="4" r="2" fill="#1a365d"/></svg>
+      </span>
+      <span>Antenas</span>
+    </div>
+    <div class="service-bar-item" title="Calderas">
+      <span class="service-bar-icon">
+        <!-- Calderas SVG -->
+        <svg width="24" height="24" fill="none"><rect x="6" y="6" width="12" height="12" rx="3" fill="#1a365d"/><circle cx="12" cy="12" r="3" fill="#2ecc71"/></svg>
+      </span>
+      <span>Calderas</span>
+    </div>
+    <div class="service-bar-item" title="Cerrajero">
+      <span class="service-bar-icon">
+        <!-- Cerrajero SVG -->
+        <svg width="24" height="24" fill="none"><rect x="7" y="10" width="10" height="4" rx="2" fill="#1a365d"/><circle cx="9" cy="12" r="1" fill="#2ecc71"/><rect x="15" y="11" width="2" height="2" rx="1" fill="#2ecc71"/></svg>
+      </span>
+      <span>Cerrajero</span>
+    </div>
+    <div class="service-bar-item" title="Electricista">
+      <span class="service-bar-icon">
+        <!-- Electricista SVG -->
+        <svg width="24" height="24" fill="none"><polygon points="12,4 14,12 10,12 12,20" fill="#1a365d"/><circle cx="12" cy="22" r="1.5" fill="#2ecc71"/></svg>
+      </span>
+      <span>Electricista</span>
+    </div>
+    <div class="service-bar-item" title="Electrodomésticos">
+      <span class="service-bar-icon">
+        <!-- Electrodomésticos SVG -->
+        <svg width="24" height="24" fill="none"><rect x="6" y="6" width="12" height="12" rx="2" fill="#1a365d"/><circle cx="12" cy="12" r="3" fill="#fff"/><circle cx="12" cy="12" r="1.5" fill="#2ecc71"/></svg>
+      </span>
+      <span>Electrodom.</span>
+    </div>
+    <div class="service-bar-item" title="Fontanero">
+      <span class="service-bar-icon">
+        <!-- Fontanero SVG -->
+        <svg width="24" height="24" fill="none"><rect x="10" y="6" width="4" height="8" rx="2" fill="#1a365d"/><rect x="8" y="14" width="8" height="4" rx="2" fill="#2ecc71"/></svg>
+      </span>
+      <span>Fontanero</span>
+    </div>
+    <div class="service-bar-item" title="Pocero">
+      <span class="service-bar-icon">
+        <!-- Pocero SVG -->
+        <svg width="24" height="24" fill="none"><ellipse cx="12" cy="12" rx="7" ry="3" fill="#1a365d"/><ellipse cx="12" cy="16" rx="7" ry="2" fill="#2ecc71"/></svg>
+      </span>
+      <span>Pocero</span>
+    </div>
+    <div class="service-bar-item" title="Reformas">
+      <span class="service-bar-icon">
+        <!-- Reformas SVG -->
+        <svg width="24" height="24" fill="none"><rect x="5" y="10" width="14" height="4" rx="2" fill="#1a365d"/><rect x="7" y="14" width="10" height="2" rx="1" fill="#2ecc71"/></svg>
+      </span>
+      <span>Reformas</span>
+    </div>
+  </div>
+
+  <!-- Banner principal -->
   <section class="hero">
-    <h1>Técnicos a domicilio en Madrid</h1>
-    <p>Solicita tu técnico en minutos. Servicio rápido, profesional y seguro.</p>
+    <h1>Técnicos expertos a domicilio en Madrid. Soluciona tu avería hoy mismo, sin sorpresas.</h1>
+    <p>Más de 20.000 clientes confían en nosotros. Reparamos, instalamos y resolvemos cualquier avería en tu hogar o empresa, en Madrid y alrededores. Servicio rápido, seguro y con garantía.</p>
     <a href="#solicitud"><button class="cta-btn">Solicitar técnico</button></a>
   </section>
 
-  <section class="steps">
-    <div class="step">
-      <span>1</span>
-      Solicita tu técnico
-    </div>
-    <div class="step">
-      <span>2</span>
-      Asignamos al profesional adecuado
-    </div>
-    <div class="step">
-      <span>3</span>
-      Solucionamos tu problema en casa
-    </div>
-  </section>
+  <!-- Descripción breve -->
+  <div class="desc-section">
+    Instalación, reparación y reformas con garantía. Técnicos cualificados, atención personalizada y precios competitivos. ¡Confía en profesionales!
+  </div>
 
+  <!-- Servicios detallados -->
   <section class="services-section" id="servicios">
     <div class="services-title">Nuestros servicios</div>
     <div class="services">
-      <div class="service-card"><span class="icon">❄️</span><div class="name">Aire acondicionado</div></div>
-      <div class="service-card"><span class="icon">🧱</span><div class="name">Albañil</div></div>
-      <div class="service-card"><span class="icon">📡</span><div class="name">Antenas / Porteros</div></div>
-      <div class="service-card"><span class="icon">🔥</span><div class="name">Calderas</div></div>
-      <div class="service-card"><span class="icon">🔑</span><div class="name">Cerrajero</div></div>
-      <div class="service-card"><span class="icon">💡</span><div class="name">Electricista</div></div>
-      <div class="service-card"><span class="icon">🧺</span><div class="name">Electrodomésticos</div></div>
-      <div class="service-card"><span class="icon">🔧</span><div class="name">Fontanero</div></div>
-      <div class="service-card"><span class="icon">🚰</span><div class="name">Pocero</div></div>
-      <div class="service-card"><span class="icon">🏗️</span><div class="name">Reformas</div></div>
+      <div class="service-card">
+        <span class="icon"><svg width="38" height="38" fill="none"><rect x="5" y="10" width="28" height="10" rx="3" fill="#1a365d"/><rect x="8" y="13" width="22" height="4" rx="2" fill="#fff"/><circle cx="14" cy="27" r="2.5" fill="#2ecc71"/><circle cx="24" cy="27" r="2.5" fill="#2ecc71"/></svg></span>
+        <div class="name">Aire acondicionado</div>
+        <div class="desc">Instalación, reparación y mantenimiento de aire acondicionado. Soluciones rápidas para que disfrutes del mejor clima en tu hogar.</div>
+      </div>
+      <div class="service-card">
+        <span class="icon"><svg width="38" height="38" fill="none"><rect x="7" y="20" width="24" height="8" rx="2" fill="#1a365d"/><rect x="11" y="24" width="6" height="3" rx="1" fill="#fff"/><rect x="23" y="24" width="6" height="3" rx="1" fill="#fff"/></svg></span>
+        <div class="name">Albañil</div>
+        <div class="desc">Reformas, reparaciones y trabajos de albañilería con acabados profesionales y máxima limpieza.</div>
+      </div>
+      <div class="service-card">
+        <span class="icon"><svg width="38" height="38" fill="none"><rect x="18" y="10" width="3" height="16" rx="1.5" fill="#1a365d"/><circle cx="19.5" cy="30" r="3" fill="#2ecc71"/><circle cx="19.5" cy="7" r="3" fill="#1a365d"/></svg></span>
+        <div class="name">Antenas / Porteros</div>
+        <div class="desc">Instalación y reparación de antenas y porteros automáticos. Señal perfecta y comunicación segura.</div>
+      </div>
+      <div class="service-card">
+        <span class="icon"><svg width="38" height="38" fill="none"><rect x="10" y="10" width="18" height="18" rx="5" fill="#1a365d"/><circle cx="19" cy="19" r="5" fill="#2ecc71"/></svg></span>
+        <div class="name">Calderas</div>
+        <div class="desc">Reparación urgente y mantenimiento de calderas, termos y calentadores. Calor y confort garantizados.</div>
+      </div>
+      <div class="service-card">
+        <span class="icon"><svg width="38" height="38" fill="none"><rect x="13" y="16" width="12" height="6" rx="3" fill="#1a365d"/><circle cx="16" cy="19" r="2" fill="#2ecc71"/><rect x="27" y="17" width="3" height="3" rx="1.5" fill="#2ecc71"/></svg></span>
+        <div class="name">Cerrajero</div>
+        <div class="desc">Apertura de puertas, cambio de cerraduras y bombines, instalación de puertas acorazadas. Seguridad y rapidez.</div>
+      </div>
+      <div class="service-card">
+        <span class="icon"><svg width="38" height="38" fill="none"><polygon points="19,7 23,23 15,23 19,33" fill="#1a365d"/><circle cx="19" cy="36" r="2" fill="#2ecc71"/></svg></span>
+        <div class="name">Electricista</div>
+        <div class="desc">Electricistas autorizados para todo tipo de averías, instalaciones y boletines eléctricos. Recupera la luz en minutos.</div>
+      </div>
+      <div class="service-card">
+        <span class="icon"><svg width="38" height="38" fill="none"><rect x="10" y="10" width="18" height="18" rx="4" fill="#1a365d"/><circle cx="19" cy="19" r="6" fill="#fff"/><circle cx="19" cy="19" r="3" fill="#2ecc71"/></svg></span>
+        <div class="name">Electrodomésticos</div>
+        <div class="desc">Reparación de lavadoras, frigoríficos, hornos y cualquier electrodoméstico. Servicio rápido y eficaz.</div>
+      </div>
+      <div class="service-card">
+        <span class="icon"><svg width="38" height="38" fill="none"><rect x="16" y="10" width="6" height="14" rx="3" fill="#1a365d"/><rect x="12" y="26" width="14" height="6" rx="3" fill="#2ecc71"/></svg></span>
+        <div class="name">Fontanero</div>
+        <div class="desc">Desatascos, fugas, instalación de grifos y radiadores. Fontaneros expertos a tu servicio.</div>
+      </div>
+      <div class="service-card">
+        <span class="icon"><svg width="38" height="38" fill="none"><ellipse cx="19" cy="19" rx="12" ry="5" fill="#1a365d"/><ellipse cx="19" cy="27" rx="12" ry="3" fill="#2ecc71"/></svg></span>
+        <div class="name">Pocero</div>
+        <div class="desc">Desatascos y limpieza de tuberías y pozos. Solucionamos cualquier problema de pocería.</div>
+      </div>
+      <div class="service-card">
+        <span class="icon"><svg width="38" height="38" fill="none"><rect x="8" y="16" width="22" height="6" rx="3" fill="#1a365d"/><rect x="12" y="24" width="14" height="3" rx="1.5" fill="#2ecc71"/></svg></span>
+        <div class="name">Reformas</div>
+        <div class="desc">Reformas integrales o parciales en viviendas y locales. Calidad, rapidez y presupuesto sin compromiso.</div>
+      </div>
     </div>
-    <button class="see-all-btn">Ver todos los servicios</button>
   </section>
 
+  <!-- Testimonios -->
   <section class="testimonials">
     <div class="testimonials-title">Opiniones de clientes</div>
     <div class="testimonial-list">
       <div class="testimonial">
-        "Rápidos y profesionales. Muy recomendables."
-        <span class="author">Juan M.</span>
+        “Llamé por una avería urgente y en menos de dos horas tenía el problema resuelto. ¡Muy recomendables!”
+        <span class="author">Marta, Chamberí</span>
       </div>
       <div class="testimonial">
-        "Me solucionaron el problema en una hora."
-        <span class="author">Laura G.</span>
+        “Profesionales, rápidos y con precios claros. Volveré a contar con ellos.”
+        <span class="author">Luis, Getafe</span>
       </div>
       <div class="testimonial">
-        "Atención excelente y trato muy amable."
-        <span class="author">Carlos R.</span>
+        “Me ayudaron con una reforma y el resultado fue excelente. Trato cercano y de confianza.”
+        <span class="author">Ana, Alcalá de Henares</span>
       </div>
     </div>
   </section>
 
+  <!-- Formulario de solicitud -->
   <section class="form-section" id="solicitud">
     <h2>Solicita tu técnico</h2>
     <form id="serviceForm" autocomplete="on">
@@ -487,58 +583,40 @@
     </div>
   </section>
 
-  <section class="blog-section" id="blog">
-    <div class="blog-title">Consejos y novedades</div>
-    <div class="blog-list">
-      <div class="blog-card">
-        <div class="blog-img"></div>
-        <div class="blog-title">¿Cómo elegir un buen técnico para tu hogar?</div>
-        <div class="blog-summary">Te damos las claves para acertar siempre que necesites un profesional en casa.</div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-img"></div>
-        <div class="blog-title">Mantenimiento básico de calderas</div>
-        <div class="blog-summary">Evita averías y ahorra dinero con estos sencillos consejos de mantenimiento.</div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-img"></div>
-        <div class="blog-title">¿Cuándo llamar a un pocero?</div>
-        <div class="blog-summary">Descubre las señales de alerta y cómo actuar ante problemas de pocería.</div>
-      </div>
-    </div>
-  </section>
-
+  <!-- FAQ -->
   <section class="faq-section" id="faq">
     <div class="faq-title">Preguntas frecuentes</div>
     <div class="faq-list">
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">¿Cómo funciona el servicio?</div>
-        <div class="faq-a">Solicitas el servicio, asignamos el técnico más adecuado y resolvemos tu problema en casa.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">¿En qué zonas trabajáis?</div>
+        <div class="faq-a">Atendemos toda la Comunidad de Madrid, tanto en la capital como en los principales municipios.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">¿Qué zonas cubrís?</div>
-        <div class="faq-a">Actualmente cubrimos toda la Comunidad de Madrid. Pronto ampliaremos a más ciudades.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">¿Cuánto tardáis en enviar un técnico?</div>
+        <div class="faq-a">En la mayoría de los casos, un profesional puede estar en tu domicilio en menos de 2 horas.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">¿Cuánto tarda en llegar un técnico?</div>
-        <div class="faq-a">En la mayoría de los casos, un técnico puede estar en tu domicilio en menos de 2 horas.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">¿Ofrecéis garantía en las reparaciones?</div>
+        <div class="faq-a">Sí, todos nuestros trabajos están garantizados para tu tranquilidad.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">¿Puedo pedir presupuesto sin compromiso?</div>
-        <div class="faq-a">Por supuesto, puedes solicitar presupuesto sin ningún compromiso.</div>
+        <div class="faq-a">Por supuesto, te asesoramos y preparamos un presupuesto gratuito y sin compromiso.</div>
       </div>
     </div>
   </section>
 
+  <!-- Chat flotante -->
   <div class="chat-float" title="Chat en vivo (próximamente)" onclick="alert('Chat en vivo próximamente')">
     💬
   </div>
 
+  <!-- Footer -->
   <footer id="contacto">
-    &copy; 2024 Técnicos Madrid · Tel: 600 00 00 00 · Email: info@tecnicosmadrid.com<br>
-    <a href="#">Aviso legal</a> | 
-    <a href="#">Política de privacidad</a> | 
-    <a href="#">Redes sociales</a>
+    Técnicos Madrid · C/ Embajadores, 190, Madrid · Tel: 600 00 00 00 · Email: info@tecnicosmadrid.com<br>
+    Síguenos en redes sociales |
+    <a href="#">Aviso legal</a> |
+    <a href="#">Política de privacidad</a>
   </footer>
 
   <script>
